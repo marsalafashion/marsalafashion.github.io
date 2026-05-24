@@ -1358,6 +1358,11 @@
 
         // ADMIN FUNCTIONS
         function toggleAdmin() {
+            if (!currentUser) {
+                alert('⚠️ Você precisa estar conectada para acessar o painel admin! 🔐');
+                toggleAuth();
+                return;
+            }
             document.getElementById('admin-modal').classList.toggle('active');
         }
 
@@ -1483,15 +1488,4 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" onclick="deleteProduct(${p.id})" style="background: #ff6b6b; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap;">Deletar</button>
-                    </div>
-                `;
-            });
-
-            list.innerHTML = html;
-        }
-
-        window.addEventListener('load', init);
-    </script>
-</body>
-</html>
+                        <button type="button" onclick="deleteProduct(${p.id})" style="background: #ff6b6b; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap;">Delet
